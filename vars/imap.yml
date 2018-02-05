@@ -1,3 +1,3 @@
 ---
-imap_url: 'imap.gmail.com'
+imap_url: 'ssl://imap.gmail.com'
 imap_port: '993'

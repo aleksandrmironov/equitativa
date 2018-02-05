@@ -11,8 +11,9 @@
 ### How to run 
 1. ```$ git clone https://github.com/aleksandrmironov/equitativa.git```
 2. ```$ cd equitativa```
-3. ```$ ansible-playbook -u fedora -s --private-key=devops-us-east-1 -i '54.163.23.48,' deploy.yml (please replace key and ip address with yours)```
+3. ```$ ansible-playbook -u fedora -s --private-key=devops-us-east-1 -e 'imap_url=ssl://imap.gmail.com' -i '54.163.23.48,' deploy.yml (please replace key and ip address with yours)```
 
 Now you can access to a webamail interface using http://54.163.23.48
 
-
+##IMPORTANT
+"Less secure apps" mode should be enabled in gmail web interface to make webmail able to connect to gmail imap service.
