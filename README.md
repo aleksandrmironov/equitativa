@@ -11,7 +11,7 @@
 ### How to run 
 1. ```$ git clone https://github.com/aleksandrmironov/equitativa.git```
 2. ```$ cd equitativa```
-3. ```$ ansible-playbook -u fedora -s --private-key=devops-us-east-1 -e 'imap_url=ssl://imap.gmail.com imap_port=993' -i '54.163.23.48,' deploy.yml (please replace key, ip address, imap_url and imap_port values with yours)```
+3. ```$ ansible-playbook -u fedora -s --private-key=devops-us-east-1 -e 'imap_url=ssl://imap.gmail.com imap_port=993' -i '54.163.23.48,' deploy.yml``` (please replace key, ip address, imap_url and imap_port values with yours)
 
 Now you can access to a webamail interface using http://54.163.23.48
 
