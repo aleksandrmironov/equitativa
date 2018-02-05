@@ -1,0 +1,45 @@
+---
+
+- name: Deploy webmail app
+  hosts: all
+  gather_facts: false
+
+  vars_files:
+    - 'vars/imap.yml'
+
+  tasks:
+    - name: install python and deps for ansible modules
+      raw: dnf install -y python2 python2-dnf python2-pip libselinux-python
+
+    - name: gather facts
+      setup:
+
+    - name: Docker-engine installation
+      dnf:
+        name: 'docker'
+        state: present
+      with_items:
+        - 'docker'
+
+    - service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Install docker-py
+      pip:
+        name: docker-py
+
+    - name: Install webmail
+      docker_container:
+        name: webmail
+        hostname: webmail
+        image: roundcube/roundcubemail
+        state: started
+        restart: yes
+        restart_policy: always
+        ports:
+          - "80:80"
+        env:
+          ROUNDCUBEMAIL_DEFAULT_HOST: "{{ imap_url }}"
+          ROUNDCUBEMAIL_DEFAULT_PORT: "{{ imap_port }}"
